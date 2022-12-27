@@ -64,17 +64,17 @@ func Walk(globalFlags GlobalFlags, update bool, updateAll bool, errorsInfo *Info
 			return filepath.SkipDir
 		}
 		if info.IsDir() {
-			// slog.Debug("handling dir")
+			slog.Debug("handling dir")
 		} else {
 			if includeFile(path) {
 				isErrorsGoFile := isErrorGoFile(path)
-				// slog.LogAttrs(slog.LevelDebug, "failure accessing file", slog.String("iserrorsfile", fmt.Sprintf("%v", isErrorsGoFile)))
+				slog.LogAttrs(slog.LevelDebug, "failure accessing file", slog.String("iserrorsfile", fmt.Sprintf("%v", isErrorsGoFile)))
 				err := handleFile(path, update && isErrorsGoFile, updateAll, errorsInfo, comp)
 				if err != nil {
 					return err
 				}
 			} else {
-				// slog.Debug("skipping file")
+				slog.Debug("skipping file")
 			}
 		}
 		return nil

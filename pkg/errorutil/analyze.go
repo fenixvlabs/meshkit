@@ -2,6 +2,7 @@ package errorutil
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/fenixvlabs/meshkit/pkg/meshlog"
 	log "github.com/sirupsen/logrus"
 	"go/ast"
@@ -28,7 +29,7 @@ func handleFile(path string, update, updateAll bool, infoAll *InfoAll, comp *Inf
 	anyValueChanged := false
 	ast.Inspect(file, func(n ast.Node) bool {
 		if pgkid, ok := isNewDefaultCallExpr(n); ok {
-			slog.Warn("Usage of deprecated function %s.NewDefault detected.", pgkid)
+			slog.LogAttrs(slog.LevelDebug, fmt.Sprintf("Usage of deprecated function %s. NewDefault detected.", pgkid))
 			if !contains(infoAll.DeprecatedNewDefault, path) {
 				infoAll.DeprecatedNewDefault = append(infoAll.DeprecatedNewDefault, path)
 			}
@@ -38,7 +39,7 @@ func handleFile(path string, update, updateAll bool, infoAll *InfoAll, comp *Inf
 		}
 		if newErr, ok := isNewCallExpr(n); ok {
 			name := newErr.Name
-			logger.Info("New.Error(...) call detected, error code name", name)
+			logger.LogAttrs(slog.LevelDebug, "New.Error(...) call detected, error code name", slog.String("error code", name))
 			_, ok := infoAll.Errors[name]
 			if !ok {
 				infoAll.Errors[name] = []Error{}

@@ -48,10 +48,10 @@ func Export(componentInfo *Info, infoAll *InfoAll, outputDir string) error {
 					SuggestedRemediation: details.SuggestedRemediation,
 				}
 			} else {
-				slog.LogAttrs(slog.LevelError, fmt.Sprintf("duplicate error details for error name '%s' and code '%s'", e.Name, e.Code), slog.String("error", e.Code), slog.String("code", e.Code))
+				slog.LogAttrs(slog.LevelError, fmt.Sprintf("duplicate error details for error name '%s' and code '%s'", e.Name, e.Code), slog.String("error", e.Name), slog.String("code", e.Code))
 			}
 		} else {
-			slog.LogAttrs(slog.LevelWarn, fmt.Sprintf("no error details found for error name '%s' and code '%s'", e.Name, e.Code), slog.String("error", e.Code), slog.String("code", e.Code))
+			slog.LogAttrs(slog.LevelWarn, fmt.Sprintf("no error details found for error name '%s' and code '%s'", e.Name, e.Code), slog.String("error", e.Name), slog.String("code", e.Code))
 		}
 	}
 	jsn, err := json.MarshalIndent(export, "", " ")

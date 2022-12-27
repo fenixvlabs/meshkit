@@ -134,13 +134,13 @@ func handleValueSpec(n ast.Node, update bool, updateAll bool, comp *Info, logger
 						value.Value = fmt.Sprintf("\"%s\"", comp.GetNextErrorCode())
 						newValue = strings.Trim(value.Value, "\"")
 						anyValueChanged = true
-						logger.With([]slog.Attr{slog.String("name", id.Name), slog.String("value", newValue), slog.String("oldValue", oldValue)}).Info("Err* variable with literal value replaced.")
+						logger.LogAttrs(slog.LevelDebug, "Err* variable with literal value replaced.", slog.String("name", id.Name), slog.String("value", newValue), slog.String("oldvalue", oldValue))
 					} else {
 						newValue = oldValue
-						logger.With([]slog.Attr{slog.String("name", id.Name), slog.String("oldValue", oldValue)}).Info("Err* variable detected with literal value.")
+						logger.LogAttrs(slog.LevelDebug, "Err* variable detected with literal value.", slog.String("name", id.Name), slog.String("oldValue", oldValue))
 					}
 				case *ast.CallExpr:
-					logger.With([]slog.Attr{slog.String("name", id.Name)}).Warn("Err* variable detected with call expression value.")
+					logger.LogAttrs(slog.LevelDebug, "Err* variable detected with call expression value.", slog.String("name", id.Name))
 				}
 				ec := &Info{
 					Name:          id.Name,
