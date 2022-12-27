@@ -1,0 +1,24 @@
+mode = "auto"
+
+[git]
+
+[git.config]
+email = "acaldwell@phxvlabs.dev"
+name = "Antonette Caldwell"
+
+[git.tags]
+prefix = "v"
+
+[semver]
+patch = ["fix", "bug"]
+minor = ["feature"]
+major = ["release"]
+
+[modes]
+
+[modes.git-branch]
+delimiters = "/"
+
+[modes.git-commit]
+delimiters = "[]"
+
