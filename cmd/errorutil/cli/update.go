@@ -12,7 +12,7 @@ func updateCmd() *cobra.Command {
 		Use:   "update",
 		Short: "Update error codes and details",
 		Long:  "Update releases error codes where specified, and updates error details",
-		Args:  cobra.MinimumNArgs(1),
+		Args:  cobra.MinimumNArgs(0),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			globalFlags, err := getGlobalFlags(cmd)
 			if err != nil {

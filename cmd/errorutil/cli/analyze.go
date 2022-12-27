@@ -9,7 +9,7 @@ var analyzeCmd = &cobra.Command{
 	Use:   "analyze",
 	Short: "Analyze a directory tree",
 	Long:  "analyze analyzes a directory tree for error codes ",
-	Args:  cobra.MinimumNArgs(1),
+	Args:  cobra.MinimumNArgs(0),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		globalFlags, err := getGlobalFlags(cmd)
 		if err != nil {
