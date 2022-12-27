@@ -6,10 +6,13 @@ import (
 	"os"
 )
 
+var version = "0.0.1"
+
 var rootCmd = &cobra.Command{
-	Use:   "errorutil",
-	Short: "errorutil",
-	Long:  "errorutil",
+	Use:     "errorutil",
+	Version: version,
+	Short:   "errorutil",
+	Long:    "errorutil",
 
 	Run: func(cmd *cobra.Command, args []string) {
 
