@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var version = "0.0.1"
+var version = "0.0.6"
 var verbose = "verbose"
 var rootDir = "dir"
 var outDir = "out-dir"
@@ -17,8 +17,8 @@ var forceUpdateAllCodesCmdFlag = "force"
 var rootCmd = &cobra.Command{
 	Use:     "errorutil",
 	Version: version,
-	Short:   "errorutil",
-	Long:    "errorutil",
+	Short:   "errorutil analyzes, verifies, and updates MeshKit compatible errors",
+	Long:    "errorutil analyzes, verifies and updates MeshKit compatible errors in Meshery Go source code trees",
 
 	Run: func(cmd *cobra.Command, args []string) {
 
@@ -27,7 +27,7 @@ var rootCmd = &cobra.Command{
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintf(os.Stderr, "Whoops. There was an error while executing your CLI '%s'", err)
+		fmt.Fprintf(os.Stderr, "Whoops. There was an error while executing your CLI '%s' ", err)
 		os.Exit(1)
 	}
 }
