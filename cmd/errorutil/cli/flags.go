@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"github.com/fenixvlabs/meshkit/pkg/errorutil"
+	"github.com/fenixvlabs/meshkit/internal/errorutil"
 	"github.com/spf13/cobra"
 )
 

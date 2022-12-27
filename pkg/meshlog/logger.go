@@ -2,7 +2,7 @@ package meshlog
 
 import (
 	"context"
-	"github.com/fenixvlabs/meshkit/internal/errors"
+	"github.com/fenixvlabs/meshkit/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
 	"golang.org/x/exp/slog"
