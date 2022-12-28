@@ -35,6 +35,8 @@ type Interface interface {
 	Debug(context.Context, description, ...interface{})
 	Warn(err error)
 	Error(err error)
+	ControllerLogger()
+	DatabaseLogger()
 }
 
 type commonHandler struct {
