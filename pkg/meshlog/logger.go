@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/fenixvlabs/meshkit/pkg/errors"
 	log "github.com/sirupsen/logrus"
+	gormlogger "gorm.io/gorm/logger"
 
 	"golang.org/x/exp/slog"
 	"io"
@@ -35,8 +36,8 @@ type Interface interface {
 	Debug(context.Context, description, ...interface{})
 	Warn(err error)
 	Error(err error)
-	ControllerLogger()
-	DatabaseLogger()
+	ControllerLogger() slog.Logger
+	DatabaseLogger() gormlogger.Interface
 }
 
 type commonHandler struct {
