@@ -3,13 +3,14 @@ package errorutil
 import (
 	"fmt"
 	"go/ast"
-	"golang.org/x/exp/slog"
 	"strings"
+
+	"golang.org/x/exp/slog"
 )
 
 // isNewDefaultCallExpr tests whether the node is a call expression for NewDefault.
 // It returns the package identifier for convenience, empty for a dot-import.
-// It does not verify that the actual type is from github.com/layer5io/meshkit/errors.
+// It does not verify that the actual type is from github.com/fenixvlabs/meshkit/pkg/errors.
 func isNewDefaultCallExpr(node ast.Node) (string, bool) {
 	if ce, ok := node.(*ast.CallExpr); ok {
 		pkg, name, ok2 := isSelectorOrIdent(ce.Fun)
