@@ -40,7 +40,7 @@ func Export(componentInfo *Info, infoAll *InfoAll, outputDir string) error {
 				details := infoAll.Errors[e.Name][0]
 				export.Errors[k] = Error{
 					Name:                 details.Name,
-					Code:                 e.Code,
+					Code:                 details.Code,
 					Severity:             details.Severity,
 					ShortDescription:     details.ShortDescription,
 					LongDescription:      details.LongDescription,
